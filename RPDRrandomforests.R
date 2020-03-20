@@ -1,6 +1,5 @@
 library(randomForest)
 
-#join episode statistcs with demographic data
 data <- read.csv("QueensList.csv")
 data$Town_Pop <- as.numeric(data$Town_Pop)
 
@@ -8,7 +7,7 @@ data$Town_Pop <- as.numeric(data$Town_Pop)
 data$Insta_total <- ave(data$Instagram, data$Season, FUN = sum, na.rm=TRUE)
 data$Insta_perc <- data$Instagram / data$Insta_total
 
-#Classify Queens by outcome (Top, Middle, Bottom)
+#Classify Queens by outcome (Winner/Runner-up, non-finalists, season 12 TBD)
 data$Class <- ifelse(data$Outcome == "Winner" | data$Outcome == "Runner-up", "TOP", 
                      ifelse(data$Outcome == "TBD", "TBD", "Bottom"))
 
